@@ -2,7 +2,7 @@ const db = require("knex")(require("./db")); //knex is a node js ORM, others inc
 
 async function getEmployees() {
   try {
-    // ------------------------Lazy loading and can lead to the N+1 query problem is in this-----------------------------
+    // ------------------------Lazy loading and can lead to the N+1 query problem is in this---------------
 
     // uncomment this to work
     // const users = await db("users").select("*"); // First query
@@ -13,7 +13,7 @@ async function getEmployees() {
     //   user.posts = posts;
     //   console.log(posts);
     // } 
-    // ------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------
 
 
     // -----------------------Earger loading which eliminates N+1 query problem----------------------------
@@ -22,7 +22,7 @@ async function getEmployees() {
       .select("users.id", "users.age", "posts.id as postId", "posts.title")
       .orderBy('users.id', 'asc');
     console.log(accountsWIthBranches);
-    // ------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------
   } catch (err) {
     console.error("Error executing query", err.stack);
   }
